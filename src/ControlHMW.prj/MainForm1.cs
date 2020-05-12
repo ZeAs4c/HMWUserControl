@@ -8,34 +8,49 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ControlHMW
 {
 	public partial class MainForm1 : Form
 	{
+		#region Data
+
+		private LogControl _log;
+		private SettingsControl _setting;
+		private PlayerControl _videoPlayer;
+
+		private LogControler _logControler;
+		private VideoPlayerControler _videoPlayerControler;
 		private ProjectSettings _projectSettings;
 
-		/// <summary>Конструктор Формы./// </summary>
-		/// <param name="projectSettings">Передаем в конструктор обьект.</param>
-		public MainForm1(ProjectSettings projectSettings)
+		#endregion
+
+		#region .ctor
+
+		/// <summary> Запуск главной формы. </summary>
+		public MainForm1(
+			LogControler logControler,
+			VideoPlayerControler videoPlayerControler,
+			ProjectSettings projectSettings)
 		{
 			InitializeComponent();
-			var playerControl = new PlayerControl(); // Cоздаем обьект playerControl.
-			_panelPlayerControl.Controls.Add(playerControl); // Добовляем его на панель.
-			playerControl.Dock = DockStyle.Fill; // Расстягиваем контрол на всю панель.
 
 
-		   var settingControls = new SettingsControl(); // Cоздаем обьект settingControls.
-			_panelSettingsControl.Controls.Add(settingControls); // Добовляем его на панель.
-			settingControls.Dock = DockStyle.Fill; // Расстягиваем контрол на всю панель.
+			_logControler = logControler;
+			_videoPlayerControler = videoPlayerControler;
+			_projectSettings = projectSettings;
 
-			var logControl = new LogControl(); // Cоздаем обьект logControl.
-			_panelLogControl.Controls.Add(logControl); // Добовляем его на панель.
-			logControl.Dock = DockStyle.Fill; // Расстягиваем контрол на всю панель.
+			_log = new LogControl(_logControler);
+			_setting = new SettingsControl(_logControler, _projectSettings);
+			_videoPlayer = new PlayerControl(_logControler, _videoPlayerControler, _projectSettings);
 
-			_projectSettings = projectSettings; // Присваиваем обьект projectSettings.
+			_pnlLog.Controls.Add(_log);
+			_pnlSetting.Controls.Add(_setting);
+			_pnlVideoPlayer.Controls.Add(_videoPlayer);
 
 		}
 
-		
+		#endregion
+
 	}
 }

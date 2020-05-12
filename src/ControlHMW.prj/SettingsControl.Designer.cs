@@ -1,4 +1,6 @@
-﻿namespace ControlHMW
+﻿using System;
+using System.Windows.Forms;
+namespace ControlHMW
 {
 	partial class SettingsControl
 	{
@@ -28,104 +30,77 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this._btnOpenFile = new System.Windows.Forms.Button();
-			this._btnOpenFolder = new System.Windows.Forms.Button();
-			this._btnStart = new System.Windows.Forms.Button();
-			this._btnRightward = new System.Windows.Forms.Button();
-			this._btnLeftward = new System.Windows.Forms.Button();
-			this._btnStop = new System.Windows.Forms.Button();
-			this._btnPause = new System.Windows.Forms.Button();
+			this._chkDetector = new System.Windows.Forms.CheckBox();
+			this._chkIsUnderCatalog = new System.Windows.Forms.CheckBox();
+			this._btnSave = new System.Windows.Forms.Button();
+			this._btnLoad = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// _btnOpenFile
+			// _chkDetector
 			// 
-			this._btnOpenFile.Location = new System.Drawing.Point(15, 15);
-			this._btnOpenFile.Name = "_btnOpenFile";
-			this._btnOpenFile.Size = new System.Drawing.Size(107, 23);
-			this._btnOpenFile.TabIndex = 0;
-			this._btnOpenFile.Text = "Открыть файл";
-			this._btnOpenFile.UseVisualStyleBackColor = true;
+			this._chkDetector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this._chkDetector.AutoSize = true;
+			this._chkDetector.Location = new System.Drawing.Point(13, 18);
+			this._chkDetector.Name = "_chkDetector";
+			this._chkDetector.Size = new System.Drawing.Size(114, 17);
+			this._chkDetector.TabIndex = 0;
+			this._chkDetector.Text = "Детектор сцепок";
+			this._chkDetector.UseVisualStyleBackColor = true;
+			this._chkDetector.CheckedChanged += new System.EventHandler(this.OnChangeDetector);
 			// 
-			// _btnOpenFolder
+			// _chkIsUnderCatalog
 			// 
-			this._btnOpenFolder.Location = new System.Drawing.Point(128, 15);
-			this._btnOpenFolder.Name = "_btnOpenFolder";
-			this._btnOpenFolder.Size = new System.Drawing.Size(104, 23);
-			this._btnOpenFolder.TabIndex = 1;
-			this._btnOpenFolder.Text = "Открыть папку";
-			this._btnOpenFolder.UseVisualStyleBackColor = true;
+			this._chkIsUnderCatalog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this._chkIsUnderCatalog.AutoSize = true;
+			this._chkIsUnderCatalog.Location = new System.Drawing.Point(13, 41);
+			this._chkIsUnderCatalog.Name = "_chkIsUnderCatalog";
+			this._chkIsUnderCatalog.Size = new System.Drawing.Size(117, 17);
+			this._chkIsUnderCatalog.TabIndex = 1;
+			this._chkIsUnderCatalog.Text = "С подкаталогами ";
+			this._chkIsUnderCatalog.UseVisualStyleBackColor = true;
+			this._chkIsUnderCatalog.CheckedChanged += new System.EventHandler(this.OnChangeUnderCatalog);
 			// 
-			// _btnStart
+			// _btnSave
 			// 
-			this._btnStart.Location = new System.Drawing.Point(3, 270);
-			this._btnStart.Name = "_btnStart";
-			this._btnStart.Size = new System.Drawing.Size(75, 23);
-			this._btnStart.TabIndex = 2;
-			this._btnStart.Text = "Старт";
-			this._btnStart.UseVisualStyleBackColor = true;
+			this._btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this._btnSave.Location = new System.Drawing.Point(28, 85);
+			this._btnSave.Name = "_btnSave";
+			this._btnSave.Size = new System.Drawing.Size(75, 23);
+			this._btnSave.TabIndex = 2;
+			this._btnSave.Text = "Save";
+			this._btnSave.UseVisualStyleBackColor = true;
+			this._btnSave.Click += new System.EventHandler(this.OnSaveClick);
 			// 
-			// _btnRightward
+			// _btnLoad
 			// 
-			this._btnRightward.Location = new System.Drawing.Point(128, 308);
-			this._btnRightward.Name = "_btnRightward";
-			this._btnRightward.Size = new System.Drawing.Size(75, 23);
-			this._btnRightward.TabIndex = 3;
-			this._btnRightward.Text = ">>";
-			this._btnRightward.UseVisualStyleBackColor = true;
+			this._btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this._btnLoad.Location = new System.Drawing.Point(28, 114);
+			this._btnLoad.Name = "_btnLoad";
+			this._btnLoad.Size = new System.Drawing.Size(75, 23);
+			this._btnLoad.TabIndex = 2;
+			this._btnLoad.Text = "Load";
+			this._btnLoad.UseVisualStyleBackColor = true;
 			// 
-			// _btnLeftward
-			// 
-			this._btnLeftward.Location = new System.Drawing.Point(30, 308);
-			this._btnLeftward.Name = "_btnLeftward";
-			this._btnLeftward.Size = new System.Drawing.Size(75, 23);
-			this._btnLeftward.TabIndex = 4;
-			this._btnLeftward.Text = "<<";
-			this._btnLeftward.UseVisualStyleBackColor = true;
-			// 
-			// _btnStop
-			// 
-			this._btnStop.Location = new System.Drawing.Point(170, 270);
-			this._btnStop.Name = "_btnStop";
-			this._btnStop.Size = new System.Drawing.Size(75, 23);
-			this._btnStop.TabIndex = 5;
-			this._btnStop.Text = "Стоп";
-			this._btnStop.UseVisualStyleBackColor = true;
-			// 
-			// _btnPause
-			// 
-			this._btnPause.Location = new System.Drawing.Point(89, 270);
-			this._btnPause.Name = "_btnPause";
-			this._btnPause.Size = new System.Drawing.Size(75, 23);
-			this._btnPause.TabIndex = 6;
-			this._btnPause.Text = "Пауза";
-			this._btnPause.UseVisualStyleBackColor = true;
-			// 
-			// SettingsControl
+			// SettingControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.MenuHighlight;
-			this.Controls.Add(this._btnPause);
-			this.Controls.Add(this._btnStop);
-			this.Controls.Add(this._btnLeftward);
-			this.Controls.Add(this._btnRightward);
-			this.Controls.Add(this._btnStart);
-			this.Controls.Add(this._btnOpenFolder);
-			this.Controls.Add(this._btnOpenFile);
-			this.Name = "SettingsControl";
-			this.Size = new System.Drawing.Size(250, 343);
+			this.Controls.Add(this._btnLoad);
+			this.Controls.Add(this._btnSave);
+			this.Controls.Add(this._chkIsUnderCatalog);
+			this.Controls.Add(this._chkDetector);
+			this.Name = "SettingControl";
+			this.Size = new System.Drawing.Size(151, 599);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Button _btnOpenFile;
-		private System.Windows.Forms.Button _btnOpenFolder;
-		private System.Windows.Forms.Button _btnStart;
-		private System.Windows.Forms.Button _btnRightward;
-		private System.Windows.Forms.Button _btnLeftward;
-		private System.Windows.Forms.Button _btnStop;
-		private System.Windows.Forms.Button _btnPause;
+		private System.Windows.Forms.CheckBox _chkDetector;
+		private System.Windows.Forms.CheckBox _chkIsUnderCatalog;
+		private System.Windows.Forms.Button _btnSave;
+		private System.Windows.Forms.Button _btnLoad;
 	}
 }

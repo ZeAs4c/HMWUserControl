@@ -1,4 +1,8 @@
-﻿namespace ControlHMW
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Windows.Forms;
+namespace ControlHMW
 {
 	partial class LogControl
 	{
@@ -28,32 +32,33 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this._txtControlRichTextBox = new System.Windows.Forms.RichTextBox();
+			this._txtLog = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
 			// 
-			// _txtControlRichTextBox
+			// _txtLog
 			// 
-			this._txtControlRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-			this._txtControlRichTextBox.Location = new System.Drawing.Point(0, 0);
-			this._txtControlRichTextBox.Name = "_txtControlRichTextBox";
-			this._txtControlRichTextBox.Size = new System.Drawing.Size(223, 327);
-			this._txtControlRichTextBox.TabIndex = 0;
-			this._txtControlRichTextBox.Text = "";
+			this._txtLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			| System.Windows.Forms.AnchorStyles.Left)
+			| System.Windows.Forms.AnchorStyles.Right)));
+			this._txtLog.Location = new System.Drawing.Point(0, 3);
+			this._txtLog.Name = "_txtLog";
+			this._txtLog.ReadOnly = true;
+			this._txtLog.Size = new System.Drawing.Size(867, 144);
+			this._txtLog.TabIndex = 1;
+			this._txtLog.Text = "";
 			// 
 			// LogControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.Color.Chartreuse;
-			this.Controls.Add(this._txtControlRichTextBox);
+			this.Controls.Add(this._txtLog);
 			this.Name = "LogControl";
-			this.Size = new System.Drawing.Size(223, 327);
+			this.Size = new System.Drawing.Size(867, 150);
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.RichTextBox _txtControlRichTextBox;
+		private System.Windows.Forms.RichTextBox _txtLog;
 	}
 }
