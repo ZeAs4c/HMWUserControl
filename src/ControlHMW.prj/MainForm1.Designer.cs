@@ -35,6 +35,9 @@
 			// 
 			// _pnlVideoPlayer
 			// 
+			this._pnlVideoPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlVideoPlayer.Location = new System.Drawing.Point(12, 12);
 			this._pnlVideoPlayer.Name = "_pnlVideoPlayer";
 			this._pnlVideoPlayer.Size = new System.Drawing.Size(597, 401);

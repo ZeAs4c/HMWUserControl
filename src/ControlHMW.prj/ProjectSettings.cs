@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using System.Xml.Linq;
 namespace ControlHMW
 {
@@ -30,7 +30,11 @@ namespace ControlHMW
 		{
 			_logControler = logControler;
 
-			LoadXML();
+			if(File.Exists(_pathXML))
+			{
+				LoadXML();
+			}
+			
 		}
 
 		#endregion
