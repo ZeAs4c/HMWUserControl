@@ -83,16 +83,16 @@ namespace ControlHMW
 
 		
 
-		/// <summary> Вызывается при нажатие на кнопку Пауз. </summary>
-		private void _btnPause_Click(object sender, EventArgs e) => _videoPlayerControler.PauseVideo();
+		///<summary> Вызывается при нажатие на кнопку Пауз. </summary>
+		private async void _btnPause_ClickAsync(object sender, EventArgs e) => await _videoPlayerControler.PauseVideo();
 
 
 		/// <summary> Вызывается при нажатие на кнопку Стоп. </summary>
-		private void _btnStop_Click(object sender, EventArgs e) => _videoPlayerControler.StopVideo();
+		private async void _btnStop_ClickAsync(object sender, EventArgs e) => await _videoPlayerControler.StopVideo();
 
 		/// <summary> Вызывается при нажатие на кнопку Старт. </summary>
-		//private void OnStartClick(object sender, EventArgs e) => _videoPlayerControler.PlayVideo();
-		private void OnStartClick(object sender, EventArgs e) => _videoPlayerControler.PlayVideo();
+		private async void OnStartClick(object sender, EventArgs e) => await _videoPlayerControler.PlayVideo();
+		private async void OnStartClickAsync(object sender, EventArgs e) => await _videoPlayerControler.PlayVideo();
 		
 	}
 }

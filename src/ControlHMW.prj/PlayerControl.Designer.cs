@@ -1,4 +1,5 @@
-﻿namespace ControlHMW
+﻿using System.Threading.Tasks;
+namespace ControlHMW
 {
 	partial class PlayerControl
 	{
@@ -69,7 +70,7 @@
 			this._btnStop.TabIndex = 10;
 			this._btnStop.Text = "Стоп";
 			this._btnStop.UseVisualStyleBackColor = true;
-			this._btnStop.Click += new System.EventHandler(this._btnStop_Click);
+			this._btnStop.Click += new System.EventHandler(this._btnStop_ClickAsync);
 			// 
 			// _btnPause
 			// 
@@ -80,7 +81,7 @@
 			this._btnPause.TabIndex = 9;
 			this._btnPause.Text = "Пауза";
 			this._btnPause.UseVisualStyleBackColor = true;
-			this._btnPause.Click += new System.EventHandler(this._btnPause_Click);
+			this._btnPause.Click += new System.EventHandler(this._btnPause_ClickAsync);
 			// 
 			// _btnStart
 			// 
@@ -91,7 +92,7 @@
 			this._btnStart.TabIndex = 8;
 			this._btnStart.Text = "Старт";
 			this._btnStart.UseVisualStyleBackColor = true;
-			this._btnStart.Click += new System.EventHandler(this.OnStartClick);
+			this._btnStart.Click += new System.EventHandler(this.OnStartClickAsync);
 			// 
 			// _btnOpenFolder
 			// 

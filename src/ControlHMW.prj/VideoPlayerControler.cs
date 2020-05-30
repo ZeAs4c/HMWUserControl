@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using OpenCvSharp;
+using System.Threading.Tasks;
 
 namespace ControlHMW
 {
@@ -172,19 +173,19 @@ namespace ControlHMW
 		#region MethodsVideo
 		/// <summary> открыть видео </summary>
 		/// <param name="path"></param>
-		public void OpenVideo(string path)
+		public async Task OpenVideo(string path)
 		{
 				transmitted = path;                      // Запоминаем параметр что бы использовать его для возврата на 1 кадр, когда нажмаем кнопку стоп.
 				if(_capture != null) _capture.Dispose();
 				_capture = new VideoCapture(path);
-				_fps = (int)(1000 / _capture.Fps);
+				_fps =1;
 
 				using(Mat image = new Mat())
 				{
 					_capture.Read(image);
 					if(!image.Empty())
 					{
-						NextFrameAddInVideoControl(image);
+						await NextFrameAddInVideoControl(image);
 						_pause = false;
 						if(_stop)
 						{
@@ -193,7 +194,7 @@ namespace ControlHMW
 						else
 						{
 							_stop = false;
-							PlayVideo();
+							await PlayVideo();
 						}
 					
 					}
@@ -205,7 +206,7 @@ namespace ControlHMW
 		}
 
 		/// <summary> Воспроизвести видео. </summary>
-		public void PlayVideo()
+		public async Task PlayVideo()
 		{
 				if(_pause) _pause = false;
 				if(_stop) _stop = false;
@@ -218,8 +219,9 @@ namespace ControlHMW
 						if(_stop)
 						{
 							_capture.Dispose();
-							OpenVideo(transmitted); // Вызываем функцию OpenVideo и передаем ей параметр, что бы при нажатии на кнопку старт видео запустилось с самого начала.
-							break;
+
+						await OpenVideo(transmitted); // Вызываем функцию OpenVideo и передаем ей параметр, что бы при нажатии на кнопку старт видео запустилось с самого начала.
+							 break;
 						}
 						using(Mat image = new Mat())
 						{
@@ -229,30 +231,32 @@ namespace ControlHMW
 								_logControler.AddMessage("Конец видео!");
 								break;
 							}
-							NextFrameAddInVideoControl(image);
-							Cv2.WaitKey(_fps);
+						await NextFrameAddInVideoControl(image);
+						await Task.Delay(_fps);
 						}
 
 					}
-				
-			}
+
+				}
 		}
 
 		/// <summary> Остановить видео </summary>
-		public void StopVideo()
+		public async Task StopVideo()
 		{
-			_stop = true;
+				_stop = true;
 		}
-
 		/// <summary> Пауза в видео </summary>
-		public void PauseVideo()
+		public async Task PauseVideo()
 		{
-			if(_capture != null) _pause = true;
+			await Task.Run(() =>
+			{
+				if(_capture != null) _pause = true;
+			});
 		}
 
 		/// <summary>Отобразить следующий кадр</summary>
 		/// <param name="image"></param>
-		private void NextFrameAddInVideoControl(Mat image)
+		private async Task NextFrameAddInVideoControl(Mat image)
 		{
 			OnChangeFrame(image);
 		}
